@@ -1,0 +1,2 @@
+# Challenge_ONE_Data_Science_Telecom_X_parte_2
+Challenge_ONE_Data_Science_Telecom_X_parte_2
