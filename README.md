@@ -8,7 +8,7 @@ El objetivo principal fue construir un pipeline robusto para prever qué cliente
 Contenido del Repositorio
 notebook_challenge_one.ipynb: El notebook de Google Colab que documenta todo el proceso, desde la preparación inicial de los datos hasta el modelado predictivo y el análisis de resultados.
 datos_tratados.csv: Archivo CSV con los datos preprocesados utilizados en el análisis.
-lgbm_champion_model.pkl: El modelo Champion guardado (LightGBM), listo para ser cargado y utilizado para hacer predicciones.
+lgbm_champion_model.pkl (renombrado como archivo_champion): El modelo Champion guardado (LightGBM), listo para ser cargado y utilizado para hacer predicciones.
 Pasos Realizados en el Notebook
 El notebook notebook_challenge_one.ipynb sigue un flujo de trabajo estándar de ciencia de datos:
 
