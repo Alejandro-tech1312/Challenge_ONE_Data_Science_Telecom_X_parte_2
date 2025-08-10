@@ -1,49 +1,70 @@
 # Challenge_ONE_Data_Science_Telecom_X_parte_2
 
 Challenge ONE Data Science - Predicción de Abandono de Clientes de Telecomunicaciones
-Este repositorio contiene el análisis y los modelos predictivos desarrollados como parte del Challenge ONE Data Science, enfocado en predecir el abandono de clientes (Churn) para una empresa de telecomunicaciones.
 
-El objetivo principal fue construir un pipeline robusto para prever qué clientes tienen una mayor probabilidad de cancelar sus servicios, permitiendo a la empresa anticiparse al problema del abandono y diseñar estrategias de retención dirigidas.
+## 1. Motivación / Propósito  
+Este proyecto tiene como objetivo anticipar la pérdida de clientes en una empresa de telecomunicaciones, ofreciendo herramientas predictivas para aplicar estrategias de retención más efectivas :contentReference[oaicite:0]{index=0}.
 
-Contenido del Repositorio
-notebook_challenge_one.ipynb: El notebook de Google Colab que documenta todo el proceso, desde la preparación inicial de los datos hasta el modelado predictivo y el análisis de resultados.
+## 2. Qué es este proyecto  
+Un análisis completo con pipeline desde la limpieza de datos hasta el despliegue del modelo final (LightGBM), capaz de estimar la probabilidad de abandono (Churn) de los clientes.
 
-datos_tratados.csv: Archivo CSV con los datos preprocesados utilizados en el análisis.
-lgbm_champion_model.pkl (renombrado como archivo_champion): El modelo Champion guardado (LightGBM), listo para ser cargado y utilizado para hacer predicciones.
+## 3. Origen de los datos  
+- El dataset original fue procesado hasta generar `datos_tratados.csv`, que contiene variables de clientes, tipo/duración de contrato, facturación y servicio de internet.  
+- El preprocesamiento incluyó manejo de valores faltantes, codificación, SMOTE para balanceo y análisis de multicolinealidad.
 
-Pasos Realizados en el Notebook
-El notebook notebook_challenge_one.ipynb sigue un flujo de trabajo estándar de ciencia de datos:
+## 4. Estructura del repositorio
+├── Challenge_ONE_Data_Science_Telecom_X_parte_2_Final.ipynb ← Notebook principal con análisis completo
+├── datos_tratados.csv ← Datos preprocesados
+├── archivo_champion.pkl ← Modelo LightGBM serializado
+├── requirements.txt ← Dependencias del entorno (opcional)
+└── README.md ← Esta documentación
+Mantener una organización clara facilita la colaboración y la comprensión del proyecto :contentReference[oaicite:1]{index=1}.
 
-Carga y Exploración Inicial de Datos: Carga del dataset y una primera mirada a su estructura, tipos de datos y valores faltantes.
+## 5. Requisitos e instalación  
+- **Python 3.x**  
+- Recomendado: usar un entorno virtual e instalar dependencias con:
+```bash
+pip install -r requirements.txt
 
-Preparación y Limpieza de Datos:
+6. Guía rápida (Quickstart)
+import joblib
 
-Manejo de valores faltantes o inconsistentes.
-Eliminación de columnas irrelevantes.
-Codificación de variables categóricas (One-Hot Encoding).
-Verificación del balance de clases y aplicación de técnicas de balanceo (SMOTE).
-Análisis de Multicolinearidad (VIF).
-Análisis Exploratorio Adicional: Visualizaciones para entender la distribución de las variables y su relación con el abandono (ej. duración del contrato vs abandono).
+# Carga del modelo
+model = joblib.load("archivo_champion.pkl")
 
-Modelado Predictivo: Entrenamiento de varios modelos de clasificación:
-Regresión Logística
-Random Forest
-XGBoost
-LightGBM
+# Preprocesamiento de nuevos datos (debe reflejar el pipeline original)
+# X_new = ...
 
-Evaluación de Modelos: Comparación del rendimiento de los modelos utilizando métricas clave como Accuracy, Precision, Recall, F1-score y ROC AUC, así como matrices de confusión.
-Análisis de Importancia de Variables: Identificación de los factores más influyentes en la predicción del abandono para cada modelo.
+preds = model.predict(X_new)
+print(preds)
 
-Conclusiones e Implicaciones Estratégicas: Resumen de los hallazgos clave y propuesta de estrategias de retención basadas en los resultados.
-Guardado del Modelo Champion: Serialización y guardado del modelo con mejor rendimiento (LightGBM).
+7. Resultados principales
+Modelos evaluados: Regresión Logística, Random Forest, XGBoost y LightGBM.
 
-Factores Clave de Abandono Identificados
-El análisis reveló que los factores con mayor influencia en la probabilidad de abandono incluyen:
+Métricas clave: Accuracy, Precisión, Recall, F1-score, ROC AUC.
 
-Duración del Contrato: Contratos más cortos (mes a mes) están fuertemente asociados con el abandono.
-Tipo de Contrato (Mes a Mes): Es un predictor muy importante de Churn.
-Cobro Mensual y Total: Indican el nivel de gasto y pueden estar relacionados con la percepción de valor o la insatisfacción.
-Servicio de Internet: Específicamente, el servicio de Fibra Óptica mostró relación con el abandono en algunos modelos.
+El modelo ganador fue LightGBM.
 
-Uso del Modelo Champion
-El modelo guardado (lgbm_champion_model.pkl - renombrado como archivo_champion) puede ser cargado en un entorno Python para hacer predicciones sobre nuevos datos de clientes.
+Factores influyentes identificados: tipo y duración del contrato (mes a mes), facturación y tipo de servicio de internet (especialmente fibra óptica).
+
+8. Análisis y conclusiones
+Contratos mensuales presentan mayor riesgo de abandono.
+Los niveles de gasto afectan la percepción de valor y satisfacción.
+La fibra óptica mostró asociación con patrones de churn.
+
+Estas conclusiones respaldan acciones de retención optimizadas.
+
+9. Roadmap / Mejoras futuras
+Implementar tracking de experimentos con MLflow o Weights & Biases.
+Modularizar el código para mayor reusabilidad.
+Automatizar el pipeline completo (procesamiento, entrenamiento, evaluación y despliegue).
+Desplegar el modelo como API o microservicio para uso productivo 
+Data Science PM
+
+10. Reconocimientos y referencias
+Este proyecto se inspira en plantillas como Cookiecutter Data Science y normas de documentación para proyectos científicos y colaborativos 
+Tilburg Science Hub
+Gist
+
+11. Licencia
+Este repositorio está licenciado bajo MIT License. Permite copiar, modificar y redistribuir respetando los términos especificados.
